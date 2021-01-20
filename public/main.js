@@ -13,6 +13,22 @@
     <p class="response-para">Short: <span class="response-text"><a id='shorturl-link' href="${link}">${data.short_url}</a></span> <button id="copy">Copy</button></p>`;
   }
 
+  function wireButtons() {
+    const copyBtn = document.getElementById('copy');
+    const shortUrlLink = document.getElementById('shorturl-link');
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(shortUrlLink.href).then(
+        () => {
+          console.log('success');
+        },
+        () => {
+          console.log('failure');
+        }
+      );
+    });
+  }
+
   btn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -29,9 +45,12 @@
       .then((response) => response.json())
       .then((data) => {
         responseBox.innerHTML = render(data);
+
+        if (!data.error) {
+          wireButtons();
+        }
       })
       .catch((err) => {
-        console.log(err);
         const data = { error: 'Unable to reach the API server.' };
         responseBox.innerHTML = render(data);
       });
