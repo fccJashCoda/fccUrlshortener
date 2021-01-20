@@ -57,11 +57,9 @@ app.post('/api/shorturl/new', (req, res) => {
         return res.json({ error: 'Server Error' });
       }
       if (url) {
-        console.log('url exists');
         return res.json(url);
       }
 
-      console.log('creating url');
       const newShortUrl = new ShortUrl({
         original_url: req.body.url,
         short_url: shorten(),
@@ -84,11 +82,10 @@ app.get(`/api/shorturl/:shortcut`, (req, res) => {
         return res.json({ error: 'Server Error' });
       }
       if (url) {
-        console.log(url);
         return res.redirect(url.original_url);
       }
 
-      return res.json({ error: 'invalid url ' });
+      return res.json({ error: 'invalid url' });
     });
 });
 
