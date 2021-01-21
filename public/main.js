@@ -1,5 +1,6 @@
 (() => {
   const btn = document.querySelector('input[type="submit"]');
+  const form = document.querySelector('form');
   const urlInput = document.getElementById('url_input');
   const responseBox = document.getElementById('response-box');
 
@@ -9,8 +10,15 @@
     }
     const link = window.location.href + 'api/shorturl/' + data.short_url;
 
-    return `<p class="response-para">Original: <span class="response-text">${data.original_url}</span></p>
-    <p class="response-para">Short: <span class="response-text"><a id='shorturl-link' href="${link}">${data.short_url}</a></span> <button id="copy">Copy</button></p>`;
+    const original =
+      data.original_url.length > 30
+        ? data.original_url.slice(0, 30) + '...'
+        : data.original_url;
+
+    console.log(original);
+
+    return `<p class="response-para" id="original-url"><span class="response-text">${original}</span></p>
+    <p class="response-para" id="short-url"><span class="response-text"><a id='shorturl-link' href="${link}">${data.short_url}</a></span> <button class='btn' id="copy">Copy</button></p>`;
   }
 
   function wireButtons() {
@@ -54,5 +62,6 @@
         const data = { error: 'Unable to reach the API server.' };
         responseBox.innerHTML = render(data);
       });
+    form.reset();
   });
 })();

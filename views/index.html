@@ -2,6 +2,8 @@
 
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener Microservice | freeCodeCamp.org</title>
     <link
       rel="icon"
@@ -9,39 +11,43 @@
       href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
     />
     <link href="/public/style.css" rel="stylesheet" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
-    <h1>URL Shortener Microservice</h1>
     <main>
+      <h1>URL Shortener Microservice</h1>
       <section>
         <form>
-          <fieldset>
-            <legend>URL Shortener</legend>
-            <label for="url_input">URL:</label>
-            <input
-              id="url_input"
-              type="text"
-              name="url"
-              placeholder="https://www.freecodecamp.org/"
-            />
-            <input type="submit" value="POST URL" />
-          </fieldset>
+          <label for="url_input">URL:</label>
+          <input
+            id="url_input"
+            type="text"
+            name="url"
+            placeholder="https://www.freecodecamp.org/"
+          />
+          <input type="submit" value="POST URL" class="btn" />
         </form>
-        <!-- <form action="api/shorturl/new" method="POST">
-          <fieldset>
-            <legend>URL Shortener</legend>
-            <label for="url_input">URL:</label>
-            <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
-            <input type="submit" value="POST URL" />
-          </fieldset>
-        </form> -->
         <div id="response-box"></div>
       </section>
+      <footer>
+        <p>
+          A
+          <a href="https://www.freecodecamp.org/"
+            ><i class="fab fa-free-code-camp"></i> freeCodeCamp.org</a
+          >
+          project by
+          <a href="https://github.com/fccJashCoda"
+            ><i class="fab fa-github"></i> JashCoda</a
+          >
+        </p>
+      </footer>
     </main>
-    <footer>
-      <p>By <a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
-    </footer>
     <script src="/public/main.js"></script>
   </body>
 </html>
